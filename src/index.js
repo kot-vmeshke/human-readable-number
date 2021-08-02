@@ -14,5 +14,10 @@ module.exports = function toReadable (number) {
     return `${tens[ten]} ${units[unit]}`;
   } else if (number%100 == 0) {
     return `${units[(number/100)-1]} hundred`;
+  } else if (number > 100) {
+    let hundred = (Math.floor(number/100))-1;
+    let ten = (Math.floor((number%100)/10))-2;
+    let unit = ((number%100)%10)-1;
+    return `${units[hundred]} hundred ${tens[ten]} ${units[unit]}`;
   }
 }
