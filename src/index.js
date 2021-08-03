@@ -11,7 +11,11 @@ module.exports = function toReadable (number) {
   } else if (number >= 20 && number < 100) {
     let ten = (Math.floor(number/10))-2;
     let unit = (number%10)-1;
-    return `${tens[ten]} ${units[unit]}`;
+    if (unit < 0) {
+      return tens[ten];
+    } else {
+      return `${tens[ten]} ${units[unit]}`;
+    }
   } else if (number%100 == 0) {
     return `${units[(number/100)-1]} hundred`;
   } else if (number > 100) {
