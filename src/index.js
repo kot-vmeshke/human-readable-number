@@ -23,7 +23,11 @@ module.exports = function toReadable (number) {
     let ten = (Math.floor((number%100)/10))-2;
     let unit = ((number%100)%10)-1;
     if ((number%100)%10 == 0) {
-      return `${units[hundred]} hundred ${tens[((number%100)/10)-2]}`;
+      if (number%100 == 10) {
+        return `${units[hundred]} hundred ${teens[0]}`;
+      } else {
+        return `${units[hundred]} hundred ${tens[((number%100)/10)-2]}`;
+      }
     } else if ((Math.floor(number/10))%10 == 0) {
       return `${units[hundred]} hundred ${units[unit]}`; 
     } else if (Math.floor((number%100)/10) == 1 && ((number%100)%10 > 0)) {
